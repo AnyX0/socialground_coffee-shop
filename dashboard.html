@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Dashboard</title>
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="image/logo-image.png">
+
+    <!-- Font Awesome CDN Link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Custom CSS File Link  -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/order-elegant.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <img id="menu-btn" src="image/logo-image.png" alt="logo">
+
+        <nav class="navbar">
+            <a href="index.html#home">home</a>
+            <a href="index.html#about">about</a>
+            <a href="index.html#menu">menu</a>
+            <a href="index.html#review">review</a>
+            <a href="index.html#book">book</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+            <span class="points-badge" id="points-badge" title="Member points">0 pts</span>
+            <a href="#" class="btn" id="logout-btn">Logout</a>
+        </div>
+    </header>
+
+    <!-- MEMBER LAYOUT -->
+    <div class="sidebar-wrapper">
+        <div class="sidebar-container">
+            <aside class="sidebar" data-state="expanded">
+                <!-- Sidebar Header -->
+                <div class="sidebar-header">
+                    <div class="sidebar-brand">
+                        <img src="image/logo-image.png" alt="logo" class="sidebar-logo" />
+                        <div>
+                            <h3 class="sidebar-title">Member</h3>
+                            <p class="sidebar-subtitle">Panel</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Content -->
+                <div class="sidebar-content">
+                    <nav class="sidebar-menu">
+                        <div class="sidebar-menu-group">
+                            <div class="sidebar-menu-group-label">Dashboard</div>
+                            <ul class="sidebar-menu-list">
+                                <li class="sidebar-menu-item">
+                                    <a href="#overview" class="sidebar-menu-button" data-section="overview">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>Overview</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-menu-group">
+                            <div class="sidebar-menu-group-label">Account</div>
+                            <ul class="sidebar-menu-list">
+                                <li class="sidebar-menu-item">
+                                    <a href="#points" class="sidebar-menu-button" data-section="points">
+                                        <i class="fas fa-star"></i>
+                                        <span>Points</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a href="#history" class="sidebar-menu-button" data-section="history">
+                                        <i class="fas fa-receipt"></i>
+                                        <span>History</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a href="#wallet" class="sidebar-menu-button" data-section="wallet">
+                                        <i class="fas fa-wallet"></i>
+                                        <span>Wallet</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-menu-group" style="padding-bottom: 2.5rem;">
+                            <div class="sidebar-menu-group-label">Orders</div>
+                            <ul class="sidebar-menu-list">
+                                <li class="sidebar-menu-item">
+                                    <a href="#order" class="sidebar-menu-button" data-section="order">
+                                        <i class="fas fa-coffee"></i>
+                                        <span>Order Coffee</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Sidebar Footer -->
+                        <div class="sidebar-footer">
+                            <button class="sidebar-menu-button sidebar-logout" id="logout-side">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </button>
+                        </div>
+                    </nav>
+                </div>
+            </aside>
+        </div>
+
+        <main class="sidebar-inset">
+            <div class="member-layout">
+            <!-- OVERVIEW -->
+            <section class="member-hero" id="overview">
+                <h2 class="member-title">Welcome, <span data-username>member</span>!</h2>
+                <p class="member-subtitle">Kelola akun member Anda: poin, riwayat pembelian, dompet, dan pemesanan kopi.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Points</div>
+                        <div class="stat-value" id="points-total">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Wallet</div>
+                        <div class="stat-value" id="wallet-balance">$0.00</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Orders</div>
+                        <div class="stat-value" id="orders-count">0</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- POINTS -->
+            <section class="member-section" id="points" style="padding: 2.5rem !important; ">
+                <h3 class="section-title"><i class="fas fa-star"></i> Member Points</h3>
+                <p class="section-desc">Dapatkan 1 poin untuk setiap $1 transaksi kopi. Tukarkan poin Anda untuk promo menarik.</p>
+
+                <div class="points-panel">
+                    <div class="points-headline">
+                        <div>
+                            <p class="label" style="color:var(--sidebar-bg);">Total Poin</p>
+                            <div class="points-display">
+                                <span class="points-number" id="points-total-2">0</span>
+                                <span class="points-suffix">points</span>
+                            </div>
+                        </div>
+                        <div class="points-tier" id="points-tier">Bronze Member</div>
+                    </div>
+
+                    <div class="points-progress">
+                        <div class="points-progress-top">
+                            <span style="color:var(--sidebar-bg);">Menuju hadiah berikut</span>
+                            <span id="points-progress-text">0 / 100</span>
+                        </div>
+                        <div class="points-progress-bar">
+                            <span class="points-progress-fill" id="points-progress-fill" style="width:0%"></span>
+                        </div>
+                        <p class="points-next" id="points-next-reward" style="color:var(--sidebar-bg);">Tinggal 100 poin lagi untuk redeem $5</p>
+                    </div>
+
+                    <div class="points-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Earn Rate</span>
+                            <strong>1 point / $1</strong>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Redeem</span>
+                            <strong>100 pts → $5 wallet</strong>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Status</span>
+                            <strong id="points-status">On track</strong>
+                        </div>
+                    </div>
+
+                    <div class="inline-form" style="margin-top:1.2rem;">
+                        <button class="btn" id="redeem-100" type="button">Tukar 100 poin → $5</button>
+                        <span class="form-msg" id="redeem-msg" aria-live="polite"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HISTORY -->
+            <section class="member-section" id="history" style="padding: 2.5rem !important; ">
+                <h3 class="section-title"><i class="fas fa-receipt"></i> Riwayat Pembelian</h3>
+                
+                <!-- Monthly Summary -->
+                <div class="history-summary" id="history-summary" style="display:none;">
+                    <h4 class="summary-title">Ringkasan Belanja Bulanan</h4>
+                    <div class="summary-grid" id="summary-grid"></div>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="member-table">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Item</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-body"></tbody>
+                    </table>
+                    <p class="empty" id="history-empty">Belum ada transaksi.</p>
+                </div>
+            </section>
+
+            <!-- WALLET -->
+            <section class="member-section" id="wallet" style="padding: 2.5rem !important;">
+                <h3 class="section-title"><i class="fas fa-wallet"></i> Dompet Pembayaran</h3>
+                <div class="wallet-panel">
+                    <div class="wallet-balance-card">
+                        <div class="wallet-balance-label">Saldo Dompet</div>
+                        <div class="wallet-balance-value" id="wallet-balance-2">$0.00</div>
+                        <p class="wallet-note">Gunakan untuk bayar pesanan tanpa cash.</p>
+                    </div>
+
+                    <div class="wallet-actions">
+                        <div class="wallet-quick">
+                            <p class="label">Top Up Cepat</p>
+                            <div class="quick-buttons">
+                                <button type="button" class="btn-secondary" data-topup-amount="5">+ $5</button>
+                                <button type="button" class="btn-secondary" data-topup-amount="10">+ $10</button>
+                                <button type="button" class="btn-secondary" data-topup-amount="20">+ $20</button>
+                            </div>
+                        </div>
+                        <form id="topup-form" class="inline-form">
+                            <input type="number" id="topup-amount" class="box" min="1" step="1" placeholder="Tambah saldo (contoh: 10)">
+                            <button class="btn" type="submit">Top Up</button>
+                            <span class="form-msg" id="topup-msg" aria-live="polite"></span>
+                        </form>
+                    </div>
+
+                    <!-- TOPUP PAYMENT METHOD MODAL -->
+                    <div class="order-modal" id="topup-modal" aria-hidden="true">
+                        <div class="order-modal-overlay" id="topup-overlay"></div>
+                        <div class="order-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="topup-modal-title">
+                            <button class="order-modal-close" id="topup-modal-close" aria-label="Tutup">&times;</button>
+                            <h4 id="topup-modal-title">Pilih Metode Pembayaran</h4>
+                            <div class="order-modal-summary">
+                                <div class="modal-row">
+                                    <span>Jumlah Top Up</span>
+                                    <strong id="topup-modal-amount">$0.00</strong>
+                                </div>
+                            </div>
+                            <div class="order-modal-payment">
+                                <p>Metode Pembayaran</p>
+                                <label><input type="radio" name="topup-payment-method" value="bank" checked> Transfer Bank</label>
+                                <label><input type="radio" name="topup-payment-method" value="card"> Kartu Kredit/Debit</label>
+                                <label><input type="radio" name="topup-payment-method" value="ewallet"> E-Wallet (OVO, GoPay, Dana)</label>
+                                <label><input type="radio" name="topup-payment-method" value="qr"> QRIS</label>
+                            </div>
+                            <div class="order-modal-actions">
+                                <button type="button" class="btn" id="topup-confirm-btn">Konfirmasi Top Up</button>
+                                <button type="button" class="btn-secondary" id="topup-cancel-btn">Batal</button>
+                            </div>
+                            <span class="form-msg" id="topup-modal-msg" aria-live="polite"></span>
+                        </div>
+                    </div>
+
+                    <div class="wallet-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Metode utama</span>
+                            <strong>Wallet Balance</strong>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Keamanan</span>
+                            <strong>Protected • Prototype</strong>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Catatan</span>
+                            <strong>Top up simulasi (prototype)</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ORDER -->
+            <section class="member-section" id="order" style="padding: 3.5rem !important;">
+                <h3 class="section-title"><i class="fas fa-coffee"></i> Pesan Kopi</h3>
+                <p class="section-desc">Pilih menu favorit Anda dari daftar di bawah ini</p>
+                
+                <!-- MENU GRID -->
+                <div class="order-menu-grid">
+                    <!-- COFFEE SECTION -->
+                    <div class="order-menu-category">
+                        <h4 class="order-category-title">Coffee</h4>
+                        <div class="order-items-grid">
+                            <div class="order-menu-item" data-item="Ground Zero Espresso" data-price="1.99">
+                                <img src="image/menu-1.png" alt="Ground Zero Espresso">
+                                <div class="order-item-content">
+                                    <h5>Ground Zero Espresso</h5>
+                                    <p>Premium espresso crafted from carefully selected coffee beans.</p>
+                                    <span class="order-price">$1.99</span>
+                                    <button class="order-select-btn">Pilih</button>
+                                </div>
+                            </div>
+
+                            <div class="order-menu-item" data-item="Unity Latte" data-price="2.99">
+                                <img src="image/menu-2.png" alt="Unity Latte">
+                                <div class="order-item-content">
+                                    <h5>Unity Latte</h5>
+                                    <p>Smooth espresso blended with fresh milk and light foam.</p>
+                                    <span class="order-price">$2.99</span>
+                                    <button class="order-select-btn">Pilih</button>
+                                </div>
+                            </div>
+
+                            <div class="order-menu-item" data-item="Social Ground Signature" data-price="3.99">
+                                <img src="image/menu-3.png" alt="Social Ground Signature">
+                                <div class="order-item-content">
+                                    <h5>Social Ground Signature</h5>
+                                    <p>Signature espresso combined with fresh milk and Indonesian palm sugar.</p>
+                                    <span class="order-price">$3.99</span>
+                                    <button class="order-select-btn">Pilih</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NON-COFFEE SECTION -->
+                    <div class="order-menu-category">
+                        <h4 class="order-category-title">Non-Coffee</h4>
+                        <div class="order-items-grid">
+                            <div class="order-menu-item" data-item="Matcha Connection" data-price="3.99">
+                                <img src="image/menu-4.png" alt="Matcha Connection">
+                                <div class="order-item-content">
+                                    <h5>Matcha Connection</h5>
+                                    <p>Premium matcha powder blended with creamy fresh milk.</p>
+                                    <span class="order-price">$3.99</span>
+                                    <button class="order-select-btn">Pilih</button>
+                                </div>
+                            </div>
+
+                            <div class="order-menu-item" data-item="Chocolate Harmony" data-price="3.00">
+                                <img src="image/menu-5.png" alt="Chocolate Harmony">
+                                <div class="order-item-content">
+                                    <h5>Chocolate Harmony</h5>
+                                    <p>Rich chocolate blend mixed with fresh milk.</p>
+                                    <span class="order-price">$3.00</span>
+                                    <button class="order-select-btn">Pilih</button>
+                                </div>
+                            </div>
+
+                            <div class="order-menu-item" data-item="Peach Story Tea" data-price="2.99">
+                                <img src="image/menu-6.png" alt="Peach Story Tea">
+                                <div class="order-item-content">
+                                    <h5>Peach Story Tea</h5>
+                                    <p>Black tea infused with a soft peach aroma.</p>
+                                    <span class="order-price">$2.99</span>
+                                    <button class="order-select-btn">Pilih</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ORDER SUMMARY -->
+                <div class="order-summary" id="order-summary" style="display: none;">
+                    <h4>Pesanan Anda</h4>
+                    <div class="order-selected-item" id="order-selected-list">
+                        <!-- Items will be populated by JavaScript -->
+                    </div>
+                    <div class="order-quantity-control">
+                        <label>Jumlah</label>
+                        <div class="qty-input-group">
+                            <button type="button" class="qty-btn" id="qty-minus">-</button>
+                            <input type="number" id="order-qty" class="qty-input" value="1" min="1" step="1" readonly>
+                            <button type="button" class="qty-btn" id="qty-plus">+</button>
+                        </div>
+                    </div>
+                    <div class="order-total">
+                        <span>Total:</span>
+                        <span class="total-price" id="total-price">$0.00</span>
+                    </div>
+                    <button type="button" class="btn" id="place-order-btn">Place Order</button>
+                    <button type="button" class="btn-secondary" id="cancel-order-btn">Batalkan</button>
+                    <span class="form-msg" id="order-msg" aria-live="polite"></span>
+                </div>
+
+                <!-- ORDER CONFIRMATION MODAL -->
+                <div class="order-modal" id="order-modal" aria-hidden="true">
+                    <div class="order-modal-overlay" id="order-overlay"></div>
+                    <div class="order-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="order-modal-title">
+                        <button class="order-modal-close" id="order-modal-close" aria-label="Tutup">&times;</button>
+                        <h4 id="order-modal-title">Konfirmasi Pesanan</h4>
+                        <div class="order-modal-summary">
+                            <div class="modal-items-list" id="modal-items-list">
+                                <!-- Items will be populated by JavaScript -->
+                            </div>
+                            <div class="modal-row">
+                                <span>Jumlah</span>
+                                <strong id="modal-qty"></strong>
+                            </div>
+                            <div class="modal-row modal-total-row">
+                                <span>Total</span>
+                                <strong id="modal-total"></strong>
+                            </div>
+                        </div>
+                        <div class="order-modal-payment">
+                            <p>Metode Pembayaran</p>
+                            <label><input type="radio" name="payment-method" value="wallet" checked> Wallet Balance</label>
+                            <label><input type="radio" name="payment-method" value="cash"> Cash / Bayar di kasir</label>
+                            <label><input type="radio" name="payment-method" value="card"> Kartu / QR</label>
+                        </div>
+                        <div class="order-modal-actions">
+                            <button type="button" class="btn" id="order-confirm-btn">Konfirmasi</button>
+                            <button type="button" class="btn-secondary" id="order-cancel-btn">Batal</button>
+                        </div>
+                        <span class="form-msg" id="order-modal-msg" aria-live="polite"></span>
+                    </div>
+                </div>
+
+                <!-- ORDER SUCCESS MODAL -->
+                <div class="order-success" id="order-success" aria-hidden="true">
+                    <div class="order-success-overlay" id="order-success-overlay"></div>
+                    <div class="order-success-dialog" role="dialog" aria-modal="true" aria-labelledby="order-success-title">
+                        <button class="order-modal-close" id="order-success-close" aria-label="Tutup">&times;</button>
+                        <div class="order-success-icon">✓</div>
+                        <h4 id="order-success-title">Pesanan Berhasil</h4>
+                        <p class="order-success-text">Terima kasih! Pesanan Anda sedang diproses.</p>
+                        <div class="order-success-actions">
+                            <button type="button" class="btn" id="order-success-check">Check Pesanan</button>
+                            <button type="button" class="btn-secondary" id="order-success-ok">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LOADING MODAL -->
+                <div class="order-loading" id="order-loading" aria-hidden="true">
+                    <div class="order-loading-overlay"></div>
+                    <div class="order-loading-dialog" role="dialog" aria-modal="true" aria-labelledby="order-loading-title">
+                        <div class="loading-spinner">
+                            <img src="image/logo-image.png" alt="Loading" class="loading-logo">
+                        </div>
+                        <h4 id="order-loading-title">Mohon Tunggu Sebentar</h4>
+                        <p class="loading-text">Pesanan Anda Sedang Diproses</p>
+                    </div>
+                </div>
+
+                <!-- TOPUP SUCCESS MODAL -->
+                <div class="order-success" id="topup-success" aria-hidden="true">
+                    <div class="order-success-overlay" id="topup-success-overlay"></div>
+                    <div class="order-success-dialog" role="dialog" aria-modal="true" aria-labelledby="topup-success-title">
+                        <button class="order-modal-close" id="topup-success-close" aria-label="Tutup">&times;</button>
+                        <div class="order-success-icon">✓</div>
+                        <h4 id="topup-success-title">Top Up Berhasil</h4>
+                        <p class="order-success-text" id="topup-success-message">Saldo dompet Anda telah ditambahkan.</p>
+                        <div class="order-success-actions">
+                            <button type="button" class="btn" id="topup-success-home">Kembali ke Overview</button>
+                            <button type="button" class="btn-secondary" id="topup-success-ok">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOPUP LOADING MODAL -->
+                <div class="order-loading" id="topup-loading" aria-hidden="true">
+                    <div class="order-loading-overlay"></div>
+                    <div class="order-loading-dialog" role="dialog" aria-modal="true" aria-labelledby="topup-loading-title">
+                        <div class="loading-spinner">
+                            <img src="image/logo-image.png" alt="Loading" class="loading-logo">
+                        </div>
+                        <h4 id="topup-loading-title">Memproses Top Up</h4>
+                        <p class="loading-text">Mohon Tunggu Sebentar</p>
+                    </div>
+                </div>
+            </section>
+
+            </div>
+        </main>
+    </div>
+
+            <!-- SWIPER -->
+            <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+            <!-- Custom JS File Link  -->
+            <script src="js/script.js"></script>
+        </body>
+
+        </html>
