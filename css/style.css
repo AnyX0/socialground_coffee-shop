@@ -3,6 +3,7 @@
 :root {
     --main-color: #8c532b;
     --content-color: #fff;
+    --black-color: #000;
     --border-radius: 95% 4% 97% 2% / 4% 94% 3% 95%;
     --border-radius-hover: 4% 95% 6% 95% / 95% 4% 92% 5%;
     --border: .2rem solid var(--main-color);
@@ -39,7 +40,7 @@ section {
     font-size: 9rem;
     text-transform: uppercase;
     color: transparent;
-    -webkit-text-stroke: .05rem var(--content-color);
+    -webkit-text-stroke: .05rem var(--main-color);
     letter-spacing: .2rem;
     text-align: center;
     pointer-events: none;
