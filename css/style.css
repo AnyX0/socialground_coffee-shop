@@ -40,7 +40,7 @@ section {
     font-size: 9rem;
     text-transform: uppercase;
     color: transparent;
-    -webkit-text-stroke: .05rem var(--main-color);
+    -webkit-text-stroke: .08rem var(--main-color);
     letter-spacing: .2rem;
     text-align: center;
     pointer-events: none;
